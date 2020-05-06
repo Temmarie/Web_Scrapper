@@ -6,10 +6,10 @@ require 'byebug'
 
 def scrapper
   url = 'https://www.wattpad.com/stories/werewolf'
-  unparsed_page = HTTParty.get(url) #get raw html file
-  parsed_page = Nokogiri::HTML(unparsed_page)# parse the html file
-  books = Array.new
-  books_list = parsed_page.css('div.browse-story-item') #20 books
+  unparsed_page = HTTParty.get(url) # get raw html file
+  parsed_page = Nokogiri::HTML(unparsed_page) # parse the html file
+  books = []
+  books_list = parsed_page.css('div.browse-story-item') # 20 books
   books_list.each do |book_list|
     book = {
       title: book_list.css('a.title').text,
